@@ -516,7 +516,7 @@ arma::uvec find_popular(int P, Rcpp::List all_sample_pi, arma::uvec fix_id, Rcpp
   int D = all_sample_pi.length();
   arma::mat junk = all_sample_pi[0];
   int T = junk.n_rows;
-  arma::vec find_popular(L);S
+  arma::vec find_popular(L);
   
   find_popular = weighted_means(D,L,T,all_sample_pi,t_id);
   
