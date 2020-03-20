@@ -516,18 +516,10 @@ arma::uvec find_popular(int P, Rcpp::List all_sample_pi, arma::uvec fix_id, Rcpp
   int D = all_sample_pi.length();
   arma::mat junk = all_sample_pi[0];
   int T = junk.n_rows;
-  arma::vec find_popular(L);
-  //arma::mat sum(T,L); sum.fill(0);
+  arma::vec find_popular(L);S
   
   find_popular = weighted_means(D,L,T,all_sample_pi,t_id);
   
-    //for(int d=0; d<D; d++){
-    //  arma::mat tmp = all_sample_pi[d];
-    //  sum += tmp;
-    //}
-    //for(int l=0; l<L; l++){
-    //  find_popular(l) = arma::sum(sum.col(l));
-    //}
   arma::uvec id = arma::find(fix_id == 1);
   arma::vec zero(id.n_elem); zero.fill(0); find_popular.rows(id) = zero;
   arma::uvec sort = arma::sort_index(find_popular,"descend");
@@ -537,33 +529,6 @@ arma::uvec find_popular(int P, Rcpp::List all_sample_pi, arma::uvec fix_id, Rcpp
   }
   return(res);
 }
-
-// // [[Rcpp::export]]
-// arma::uvec old_find_popular(int P, Rcpp::List all_sample_pi, arma::uvec fix_id){
-// 
-//   int L = fix_id.n_elem;
-//   int D = all_sample_pi.length();
-//   arma::mat junk = all_sample_pi[0];
-//   int T = junk.n_rows;
-//   arma::rowvec find_popular(L);
-//   arma::mat sum(T,L); sum.fill(0);
-//   
-//   for(int d=0; d<D; d++){
-//     arma::mat tmp = all_sample_pi[d];
-//     sum += tmp;
-//   }
-//   for(int l=0; l<L; l++){
-//     find_popular(l) = arma::sum(sum.col(l));
-//   }
-//   arma::uvec id = arma::find(fix_id == 1);
-//   arma::vec zero(id.n_elem); zero.fill(0); find_popular.rows(id) = zero;
-//   arma::uvec sort = arma::sort_index(find_popular,"descend");
-//   arma::uvec res = fix_id;
-//   for(int p=0; p<P; p++){
-//     res(sort(p)) = 1;
-//   }
-//   return(res);
-// }
 
 // [[Rcpp::export]]
 Rcpp::List fix(int P, Rcpp::List all_sample_pi, Rcpp::List pi, arma::uvec fix_id, Rcpp::List t_id){
@@ -607,49 +572,6 @@ Rcpp::List fix(int P, Rcpp::List all_sample_pi, Rcpp::List pi, arma::uvec fix_id
   arma::uvec res = find_popular(P, all_sample_pi, fix_id, t_id);
   return List::create(out,res);
 }
-
-// // [[Rcpp::export]]
-// Rcpp::List old_fix(int P, Rcpp::List all_sample_pi, Rcpp::List pi, arma::uvec fix_id){
-//   
-//   
-//   Rcpp::List out = all_sample_pi;
-//   int D = out.length();
-//   //arma::uvec res = fix_id;
-//   arma::mat tmppi = pi[0];
-//   int T = tmppi.n_rows;
-//   
-//   arma::uvec id = arma::find(fix_id == 1);
-//   arma::uvec nonfix_id = arma::find(fix_id != 1);
-//   int F = id.n_elem;
-//   int J = nonfix_id.n_elem;
-//   
-//   for(int d=0; d<D; d++){
-//     arma::mat all_sample_fix_pi(T,F);
-//     arma::mat fix_pi(T,F);
-//     arma::vec sum_all_sample_fix_pi(T);
-//     arma::vec sum_nonfix_pi(T);
-//     
-//     arma::mat tmp_all_sample_pi = all_sample_pi[d];
-//     arma::mat tmp_pi = pi[d];
-//     for(int f=0; f<F; f++){
-//       all_sample_fix_pi.col(f) = tmp_all_sample_pi.col(id(f));
-//       fix_pi.col(f) = tmp_pi.col(id(f));
-//     }
-//     for(int t=0; t<T; t++){
-//       sum_all_sample_fix_pi(t) = arma::sum(all_sample_fix_pi.row(t));
-//       sum_nonfix_pi(t) = 1-arma::sum(fix_pi.row(t));
-//       tmp_pi.row(t) = tmp_pi.row(t)*(1-sum_all_sample_fix_pi(t))/sum_nonfix_pi(t);
-//     }
-//    arma::mat tmp_out = out[d];
-//    for(int j=0; j<J; j++){
-//      tmp_out.col(nonfix_id(j)) = tmp_pi.col(nonfix_id(j));
-//    }
-//    out[d] = tmp_out;
-//  }
-//  
-//  arma::uvec res = find_popular(P, all_sample_pi, fix_id);
-//  return List::create(out,res);
-//}
 
 // [[Rcpp::export]]
 Rcpp::List stochasticEM_fix(Rcpp::List & Y, const int & L, const int & D, Rcpp::List Wini, Rcpp::List piini, arma::rowvec alphaini, 
@@ -834,7 +756,7 @@ Rcpp::List stochasticEM(Rcpp::List & Y, const int & L, const int & D, Rcpp::List
 }
 
 // [[Rcpp::export]]
-Rcpp::List LONGINUS(Rcpp::List & Y, const int & L, const int & D, int & P, Rcpp::List Wini, Rcpp::List piini, arma::rowvec alphaini, 
+Rcpp::List cybertrack2(Rcpp::List & Y, const int & L, const int & D, int & P, Rcpp::List Wini, Rcpp::List piini, arma::rowvec alphaini, 
                     const arma::mat & muini, const arma::cube & Sigmaini,const double & tau, const double & nu, const double & xi,
                     const arma::mat & Lambda, const int & num_iter, int num_iter_refine, int wis_iter, Rcpp::List t_id){
   
