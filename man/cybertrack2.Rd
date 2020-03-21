@@ -169,7 +169,7 @@ for(l in 1:L) Sigmaini[,,l] <- Sigmaini[,,l]+(1e-5*diag(K))
 xi=0.10
 P <- 1
 
-result <- bertrack2(Y,L,D,P,Wini,piini,alphaini,muini,Sigmaini,tau,nu,xi,Lambda,num_iter,num_iter_refine, wis_iter, t_id)
+result <- cybertrack2(Y,L,D,P,Wini,piini,alphaini,muini,Sigmaini,tau,nu,xi,Lambda,num_iter,num_iter_refine, wis_iter, t_id)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
