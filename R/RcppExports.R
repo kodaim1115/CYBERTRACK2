@@ -89,19 +89,3 @@ cybertrack2 <- function(Y, L, D, P, Wini, piini, alphaini, muini, Sigmaini, tau,
     .Call(`_CYBERTRACK2_cybertrack2`, Y, L, D, P, Wini, piini, alphaini, muini, Sigmaini, tau, nu, xi, Lambda, num_iter, num_iter_refine, wis_iter, t_id)
 }
 
-rcpparma_hello_world <- function() {
-    .Call(`_CYBERTRACK2_rcpparma_hello_world`)
-}
-
-rcpparma_outerproduct <- function(x) {
-    .Call(`_CYBERTRACK2_rcpparma_outerproduct`, x)
-}
-
-rcpparma_innerproduct <- function(x) {
-    .Call(`_CYBERTRACK2_rcpparma_innerproduct`, x)
-}
-
-rcpparma_bothproducts <- function(x) {
-    .Call(`_CYBERTRACK2_rcpparma_bothproducts`, x)
-}
-

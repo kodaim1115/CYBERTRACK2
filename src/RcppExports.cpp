@@ -367,49 +367,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpparma_hello_world
-arma::mat rcpparma_hello_world();
-RcppExport SEXP _CYBERTRACK2_rcpparma_hello_world() {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpparma_hello_world());
-    return rcpp_result_gen;
-END_RCPP
-}
-// rcpparma_outerproduct
-arma::mat rcpparma_outerproduct(const arma::colvec& x);
-RcppExport SEXP _CYBERTRACK2_rcpparma_outerproduct(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpparma_outerproduct(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// rcpparma_innerproduct
-double rcpparma_innerproduct(const arma::colvec& x);
-RcppExport SEXP _CYBERTRACK2_rcpparma_innerproduct(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpparma_innerproduct(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// rcpparma_bothproducts
-Rcpp::List rcpparma_bothproducts(const arma::colvec& x);
-RcppExport SEXP _CYBERTRACK2_rcpparma_bothproducts(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpparma_bothproducts(x));
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_CYBERTRACK2_myrunif", (DL_FUNC) &_CYBERTRACK2_myrunif, 1},
@@ -434,10 +391,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_CYBERTRACK2_stochasticEM_fix", (DL_FUNC) &_CYBERTRACK2_stochasticEM_fix, 15},
     {"_CYBERTRACK2_stochasticEM", (DL_FUNC) &_CYBERTRACK2_stochasticEM, 13},
     {"_CYBERTRACK2_cybertrack2", (DL_FUNC) &_CYBERTRACK2_cybertrack2, 17},
-    {"_CYBERTRACK2_rcpparma_hello_world", (DL_FUNC) &_CYBERTRACK2_rcpparma_hello_world, 0},
-    {"_CYBERTRACK2_rcpparma_outerproduct", (DL_FUNC) &_CYBERTRACK2_rcpparma_outerproduct, 1},
-    {"_CYBERTRACK2_rcpparma_innerproduct", (DL_FUNC) &_CYBERTRACK2_rcpparma_innerproduct, 1},
-    {"_CYBERTRACK2_rcpparma_bothproducts", (DL_FUNC) &_CYBERTRACK2_rcpparma_bothproducts, 1},
     {NULL, NULL, 0}
 };
 
