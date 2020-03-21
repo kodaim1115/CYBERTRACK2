@@ -90,7 +90,7 @@ Kodai Minoura, Ko Abe
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
