@@ -59,6 +59,7 @@ kminit <- function(y,L,seed = sample.int(.Machine$integer.max, 1)){
        cluster=kmres$cluster)
 }
 
+#Generate synthetic longitudinal mass cytometry data.
 Y <- t_id <- clus_id <- list()
 for(d in 1:D){
   junk <- tmp_id <- list()
