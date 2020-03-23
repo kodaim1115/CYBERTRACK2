@@ -80,13 +80,19 @@ for(d in 1:D){
 }
 kmY <- do.call(rbind,Y)
 
+#number of iterations
 num_iter <- 100
 num_iter_refine <- 50
 wis_iter <- 50 
 
+#hyperparameters
 tau <- 1e-5
 nu <- K+2
 Lambda <- diag(K)
+xi=0.10 #sampling proportion for weighted iterative sampling.
+P <- 1 #number of clusters to be fixed ata once.
+
+#initialize
 kmpar <- kminit(kmY,L,123)
 Wini <- list()
 for(d in 1:D){
@@ -100,8 +106,6 @@ muini <- kmpar$mean
 Sigmaini <- kmpar$var
 for(l in 1:L) Sigmaini[,,l] <- Sigmaini[,,l]+(1e-5*diag(K))
 
-xi=0.10 #sampling proportion for weighted iterative sampling.
-P <- 1 #number of clusters to be fixed ata once.
 
 result <- cybertrack2(Y,L,D,P,Wini,piini,alphaini,muini,Sigmaini,tau,nu,xi,Lambda,num_iter,num_iter_refine, wis_iter, t_id)
 ~~~
