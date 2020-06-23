@@ -4,7 +4,7 @@ Title: Zero-inflated model based cell clustering & population tracking for longi
 Version: 1.0
 Date: 2020-03-20
 Author: Kodai Minoura and Koa Abe
-Maintainer: kodaim1115[at]gmail.com
+Maintainer: Kodai Minoura<kodaim1115@gmail.com>
 Description: 
 License: 
 Imports: Rcpp (>= 1.0.3)
