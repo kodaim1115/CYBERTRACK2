@@ -53,7 +53,7 @@ for(l in 1:L) true_sigma[,,l] <- genPositiveDefMat(dim=K,covMethod="unifcorrmat"
 
 kminit <- function(y,L,seed = sample.int(.Machine$integer.max, 1)){
   set.seed(seed)
-  kmres <- kmeans(y,L,iter.max=50,nstart=3,algorithm="Lloyd")
+  kmres <- kmeans(y,L,iter.max=50,nstart=5,algorithm="Lloyd")
   list(mean=t(kmres$centers),
        var=simplify2array(lapply(split(as.data.frame(y),kmres$cluster),var)),
        cluster=kmres$cluster)
